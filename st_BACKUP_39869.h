@@ -81,9 +81,11 @@ void die(const char *, ...);
 void redraw(void);
 void draw(void);
 
+<<<<<<< ours
 void externalpipe(const Arg *);
+=======
 void newterm(const Arg *);
-
+>>>>>>> theirs
 void printscreen(const Arg *);
 void printsel(const Arg *);
 void sendbreak(const Arg *);
