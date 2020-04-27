@@ -1,0 +1,37 @@
+/*
+* base16-DForest.h
+*
+* Base16: (https://github.com/chriskempson/base16)
+*
+* Authors: JoaoCostaIFG
+*
+* Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+* Template: Honza Pokorny <me@honza.ca>
+*/
+
+
+static const char *colorname[] = {
+  "#0b0a18", /* base00 */
+  "#5D284F", /* base08 */
+  "#5A475F", /* base0B */
+  "#9B0830", /* base0A */
+  "#E2122E", /* base0D */
+  "#9B2551", /* base0E */
+  "#E0254C", /* base0C */
+  "#dda4a9", /* base05 */
+  "#76a15d", /* base03 */
+  "#5D284F", /* base09 */
+  "#5A475F", /* base01 */
+  "#9B0830", /* base02 */
+  "#E2122E", /* base04 */
+  "#9B2551", /* base06 */
+  "#E0254C", /* base0F */
+  "#DDA4A9", /* base07 */
+};
+
+/* Default colors (colorname index)
+ * foreground, background, cursor */
+unsigned int defaultfg = 7;
+unsigned int defaultbg = 0;
+unsigned int defaultcs = 7;
+unsigned int defaultrcs = 7;
