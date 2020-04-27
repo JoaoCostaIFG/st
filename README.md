@@ -1,3 +1,9 @@
+# My build of **suckless's st**
+
+This build includes some patches (sources are inside **'patches'** folder) and personal configurations in the **'config.h'** file.  
+The **'colors-st.h'** file has my theme configuration for **st**.  
+Bellow are the contents of the original README file from **suckless**.  
+
 st - simple terminal
 --------------------
 st is a simple terminal emulator for X which sucks less.
