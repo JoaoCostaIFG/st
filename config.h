@@ -19,6 +19,7 @@ static int borderpx = 2;
 static char* shell = "/bin/bash";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
+// char *scroll = NULL;
 char *scroll = "scroll";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
@@ -142,6 +143,8 @@ static uint forcemousemod = ShiftMask;
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+  { TERMMOD,              Button4, zoom,           {.f = +1} },
+  { TERMMOD,              Button5, zoom,           {.f = -1} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
@@ -187,6 +190,18 @@ static Shortcut shortcuts[] = {
   { TERMMOD,              XK_I,           externalpipe,   {.v = copyurlcmd} },
   { MODKEY,               XK_o,           externalpipe,   {.v = copyoutput} },
 };
+
+/*
+ * keyboard scrolling (scroll config.h for reference) 
+ * {"\033[5;3~",	  SCROLL_UP,      -1},  // [L.Alt] + [PageUp]
+ * {"\033[6;3~",	  SCROLL_DOWN,    -1},	// [L.Alt] + [PageDown]
+ * {"\033k",	      SCROLL_UP,       5},	// [L.Alt] + [k]
+ * {"\033j",	      SCROLL_DOWN,     5},	// [L.Alt] + [j]
+ * {"\031",	        SCROLL_UP,       2},	// mouse wheel up
+ * {"\005",	        SCROLL_DOWN,     2},	// mouse wheel Down
+ * {"\033[1;3A",	  SCROLL_UP,       1},	// [L.Alt] + [UpArrow]
+ * {"\033[1;3B",	  SCROLL_DOWN,     1},	// [L.Alt] + [DownArrow]
+ */
 
 /*
  * Special keys (change & recompile st.info accordingly)
@@ -346,9 +361,11 @@ static Key key[] = {
 	{ XK_End,           XK_ANY_MOD,     "\033[4~",       0,    0},
 	{ XK_Prior,         ControlMask,    "\033[5;5~",     0,    0},
 	{ XK_Prior,         ShiftMask,      "\033[5;2~",     0,    0},
+	{ XK_Prior,         Mod1Mask,       "\033[5;3~",     0,    0}, // [L.Alt] + [PageUp]
 	{ XK_Prior,         XK_ANY_MOD,     "\033[5~",       0,    0},
 	{ XK_Next,          ControlMask,    "\033[6;5~",     0,    0},
 	{ XK_Next,          ShiftMask,      "\033[6;2~",     0,    0},
+	{ XK_Next,          Mod1Mask,       "\033[6;3~",     0,    0}, // [L.Alt] + [PageDown]
 	{ XK_Next,          XK_ANY_MOD,     "\033[6~",       0,    0},
 	{ XK_F1,            XK_NO_MOD,      "\033OP" ,       0,    0},
 	{ XK_F1, /* F13 */  ShiftMask,      "\033[1;2P",     0,    0},
