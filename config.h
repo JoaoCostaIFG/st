@@ -19,8 +19,8 @@ static int borderpx = 2;
 static char* shell = "/bin/bash";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
-// char *scroll = NULL;
-char *scroll = "scroll";
+char *scroll = NULL;
+// char *scroll = "scroll";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
 /* identification sequence returned in DA and DECID */
@@ -167,7 +167,7 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
   { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-  { MODKEY,               XK_t,           newterm,        {.i =  1} },
+  { MODKEY,               XK_t,           newterm,        {.i =  0} },
 
   /* zoom */
   { MODKEY,               XK_Home,        zoomreset,      {.f =  0} },
