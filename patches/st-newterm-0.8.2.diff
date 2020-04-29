@@ -44,18 +44,19 @@ index b8e6077..044e29b 100644
 +{
 +	switch (fork()) {
 +	case -1:
-+		die("fork failed: %s\n", strerror(errno));
++		fprintf(stderr, "fork failed: %s\n", strerror(errno));
 +		break;
 +	case 0:
 +		chdir(getcwd_by_pid(pid));
-+		execlp("st", "./st", NULL);
++		execlp("st", "st", NULL);
++   die("Newterm execlp failed.");
 +		break;
 +	}
 +}
 +
 +static char *getcwd_by_pid(pid_t pid) {
 +	char buf[32];
-+	snprintf(buf, sizeof buf, "/proc/%d/cwd", pid);
++ snprintf(buf, sizeof(buf), "/proc/%d/cwd", pid);
 +	return realpath(buf, NULL);
 +}
 +
