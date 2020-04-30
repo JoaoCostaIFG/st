@@ -142,9 +142,11 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-  { TERMMOD,              Button4, zoom,           {.f = +1} },
-  { TERMMOD,              Button5, zoom,           {.f = -1} },
+	{ XK_ANY_MOD,           Button2, selpaste,       {.i =  0},      1 },
+  { XK_ANY_MOD,           Button4, zoom,           {.f = +1} },
+  { XK_ANY_MOD,           Button5, zoom,           {.f = -1} },
+  { MODKEY,               Button4, kscrollup,      {.i =  2} },
+  { MODKEY,               Button5, kscrolldown,    {.i =  2} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
@@ -185,23 +187,19 @@ static Shortcut shortcuts[] = {
   { MODKEY,               XK_v,           clippaste,      {.i =  0} },
   { MODKEY,               XK_p,           selpaste,       {.i =  0} },
 
+  /* keyboard scrolling */
+  { MODKEY,               XK_Prior,       kscrollup,      {.i =  5} },
+  { MODKEY,               XK_Next,        kscrolldown,    {.i =  5} },
+  { MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
+  { MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
+  { MODKEY,               XK_k,           kscrollup,      {.i =  2} },
+  { MODKEY,               XK_j,           kscrolldown,    {.i =  2} },
+
   /* externalpipe patch */
   { MODKEY,               XK_i,           externalpipe,   {.v = openurlcmd} },
   { TERMMOD,              XK_I,           externalpipe,   {.v = copyurlcmd} },
   { MODKEY,               XK_o,           externalpipe,   {.v = copyoutput} },
 };
-
-/*
- * keyboard scrolling (scroll config.h for reference) 
- * {"\033[5;3~",	  SCROLL_UP,      -1},  // [L.Alt] + [PageUp]
- * {"\033[6;3~",	  SCROLL_DOWN,    -1},	// [L.Alt] + [PageDown]
- * {"\033k",	      SCROLL_UP,       5},	// [L.Alt] + [k]
- * {"\033j",	      SCROLL_DOWN,     5},	// [L.Alt] + [j]
- * {"\031",	        SCROLL_UP,       2},	// mouse wheel up
- * {"\005",	        SCROLL_DOWN,     2},	// mouse wheel Down
- * {"\033[1;3A",	  SCROLL_UP,       1},	// [L.Alt] + [UpArrow]
- * {"\033[1;3B",	  SCROLL_DOWN,     1},	// [L.Alt] + [DownArrow]
- */
 
 /*
  * Special keys (change & recompile st.info accordingly)
