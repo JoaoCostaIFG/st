@@ -1114,6 +1114,8 @@ newterm(const Arg* a)
 		execlp("st", "st", NULL);
     die("Newterm execlp failed.");
 		break;
+  default:
+    break;
 	}
 }
 
